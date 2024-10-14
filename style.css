@@ -1,0 +1,177 @@
+#parent {
+    background-color: rgb(238, 238, 238);
+    width: 600px;
+    max-width: 90vw;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+:root {
+    --aspect-ratio: 4/3;
+    --how-many-img: 4;
+    --radio-size: calc(100% / 160);
+    --radio-distance-from-bottom: calc(var(--width)/20); 
+    --distance-between-radios: calc(100%/20);
+    --arrow-size: calc(8cqi / var(--how-many-img));
+    --transition: 1s;
+
+    --width: calc(100% / var(--how-many-img));
+    --height: calc(var(--width) / (var(--aspect-ratio)));
+}
+
+.slider {
+    #radio1:checked~.manual-navigation .manual-btn1 {background-color: #FFF;}
+    #radio2:checked~.manual-navigation .manual-btn2 {background-color: #FFF;}
+    #radio3:checked~.manual-navigation .manual-btn3 {background-color: #FFF;}
+    #radio4:checked~.manual-navigation .manual-btn4 {background-color: #FFF;}
+
+    #radio5:checked~.manual-navigation .manual-btn5 {background-color: #FFF;}
+    #radio6:checked~.manual-navigation .manual-btn6 {background-color: #FFF;}
+    #radio7:checked~.manual-navigation .manual-btn7 {background-color: #FFF;}
+    #radio8:checked~.manual-navigation .manual-btn8 {background-color: #FFF;}
+    #radio9:checked~.manual-navigation .manual-btn9 {background-color: #FFF;}
+    #radio10:checked~.manual-navigation .manual-btn10 {background-color: #FFF;}
+}
+
+.slider {
+    width: 100%;
+    aspect-ratio: var(--aspect-ratio);
+    overflow: hidden;
+
+    #slides {
+        width: calc(100% * var(--how-many-img));
+        height: 100%;
+        display: flex;
+        position: relative;
+        container-type: inline-size; /**/
+
+        & input {
+            display: none;
+        }
+
+        .slide {
+            width: var(--width);
+            position: relative;
+            transition: var(--transition);
+            
+            & img {
+                object-fit: cover;
+                width: 100%;
+                min-height: 100%;
+            }
+        }
+
+        .manual-navigation {
+            position: absolute;
+            width: var(--width); 
+
+            margin-top: calc(var(--height) - var(--radio-distance-from-bottom));
+            display: flex;
+            justify-content: center;
+        
+            .manual-btn {
+                border: 2px solid #FFF;
+                padding: var(--radio-size);
+                border-radius: 50%;
+                cursor: pointer;
+                transition: 0.7s;
+        
+                &:not(.last) {
+                    margin-right: var(--distance-between-radios);
+                }
+        
+                &:hover {
+                    background-color: #FFF;
+                }
+            }
+        }
+
+        .arrow {
+            position: absolute;
+            width: calc(var(--width)/6);
+            height: 100%;
+            color: #ffffff21;
+            font-size: var(--arrow-size);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.7s;
+        }
+
+        #arrow-left {
+
+            padding-left: calc(var(--width)/40);
+
+            background:
+                linear-gradient(
+                  to right,
+                  hsl(0, 0%, 11%) 0%,
+                  hsla(0, 0%, 11%, 0.987) 8.2%,
+                  hsla(0, 0%, 11%, 0.951) 16.1%,
+                  hsla(0, 0%, 11%, 0.896) 23.7%,
+                  hsla(0, 0%, 11%, 0.825) 31.1%,
+                  hsla(0, 0%, 11%, 0.741) 38.1%,
+                  hsla(0, 0%, 11%, 0.648) 45%,
+                  hsla(0, 0%, 11%, 0.55) 51.6%,
+                  hsla(0, 0%, 11%, 0.45) 58.1%,
+                  hsla(0, 0%, 11%, 0.352) 64.4%,
+                  hsla(0, 0%, 11%, 0.259) 70.5%,
+                  hsla(0, 0%, 11%, 0.175) 76.6%,
+                  hsla(0, 0%, 11%, 0.104) 82.5%,
+                  hsla(0, 0%, 11%, 0.049) 88.4%,
+                  hsla(0, 0%, 11%, 0.013) 94.2%,
+                  hsla(0, 0%, 11%, 0) 100%
+                );
+            ;
+        }
+
+        #arrow-right {
+            justify-content: end;
+            padding-right: calc(var(--width)/40);
+            margin-left: calc(var(--width) - var(--width)/6);
+            background: 
+                linear-gradient(
+                  to left,
+                  hsl(0, 0%, 11%) 0%,
+                  hsla(0, 0%, 11%, 0.987) 8.2%,
+                  hsla(0, 0%, 11%, 0.951) 16.1%,
+                  hsla(0, 0%, 11%, 0.896) 23.7%,
+                  hsla(0, 0%, 11%, 0.825) 31.1%,
+                  hsla(0, 0%, 11%, 0.741) 38.1%,
+                  hsla(0, 0%, 11%, 0.648) 45%,
+                  hsla(0, 0%, 11%, 0.55) 51.6%,
+                  hsla(0, 0%, 11%, 0.45) 58.1%,
+                  hsla(0, 0%, 11%, 0.352) 64.4%,
+                  hsla(0, 0%, 11%, 0.259) 70.5%,
+                  hsla(0, 0%, 11%, 0.175) 76.6%,
+                  hsla(0, 0%, 11%, 0.104) 82.5%,
+                  hsla(0, 0%, 11%, 0.049) 88.4%,
+                  hsla(0, 0%, 11%, 0.013) 94.2%,
+                  hsla(0, 0%, 11%, 0) 100%
+                );  
+            ;
+        }
+
+        &:hover {
+            .arrow {
+                opacity: 1;
+                visibility: visible;
+            }
+
+        }
+    }
+}
