@@ -82,6 +82,7 @@ function cssCode() {
 
     let css = `
         :root {
+    /* Change values here */
     --aspect-ratio: ${getAspectRatio()};
     --how-many-img: ${imgNumber.value};
     --radio-size: ${getRadioSize()};
